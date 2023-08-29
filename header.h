@@ -6,16 +6,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-// #include "menu.c"
-// #include "read_source.c"
-// #include "writing.c"
-// #include "cripting.c"
-
 void menu_display(void);
-void read_source(void);
+char* read_source(char*);
+char* read_peroq(char*);
 void input_source(void);
 void input_perroquet(void);
-void cripting(void);
+void cripting(char*, char*);
 void uncripting(void);
 
 

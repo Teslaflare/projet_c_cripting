@@ -1,6 +1,8 @@
 #include "header.h"
 
-void read_source(void)
+// LECTURE DE LA SOURCE
+
+char* read_source(char chaine[100+1])
 {
     FILE *fp = NULL;
     char lettreLu = '\0';
@@ -12,27 +14,27 @@ void read_source(void)
         // return EXIT_FAILURE;
     }
 
-    //1ere lecture
-    //fseek(fp, 5, SEEK_SET);   //D�calage de 5 � partir du d�but du fichier
-    //fseek(fp, -5, SEEK_END);    //D�calage de 5 � partir de la fin de fichier
-
     fread(&lettreLu, sizeof(lettreLu), sizeof(char), fp);
     if (feof(fp))
     {
         printf("\nFichier Vide !!!");
     }
 
-    //Tant que la fin de fichier n'a pas �t� d�tect�e
+    int i = 0;
     while(!feof(fp))
     {
-        printf("\nLettre Lu : %c", lettreLu);
+        // printf("\nLettre Lu : %c", lettreLu);
         // printf(" %s", &perroquet);
+        chaine[i] = lettreLu;
+        i++;
         fread(&lettreLu, sizeof(lettreLu), sizeof(char), fp);
         if (feof(fp))
         {
-           printf("\n\tFichier Fini !!!");
+        //    printf("\n\tFichier Fini !!!");
+           chaine[i]='\0';
         }
     }
+    // printf("%s",chaine);
 
     int retClose = fclose(fp);
     if (retClose!= 0)
@@ -40,5 +42,51 @@ void read_source(void)
         printf("Erreur Open !");
         // return EXIT_FAILURE;
     }
-    
+    return chaine;
+}
+
+// LECTURE DU PERROQUET
+
+char* read_peroq(char chaine[100+1])
+{
+    FILE *fp = NULL;
+    char lettreLu = '\0';
+
+    fp = fopen("peroq.def", "rt");
+    if (fp == NULL)
+    {
+        printf("Erreur Open !");
+        // return EXIT_FAILURE;
+    }
+
+
+    fread(&lettreLu, sizeof(lettreLu), sizeof(char), fp);
+    if (feof(fp))
+    {
+        printf("\nFichier Vide !!!");
+    }
+
+    int i = 0;
+    while(!feof(fp))
+    {
+        // printf("\nLettre Lu : %c", lettreLu);
+        // printf(" %s", &perroquet);
+        chaine[i] = lettreLu;
+        i++;
+        fread(&lettreLu, sizeof(lettreLu), sizeof(char), fp);
+        if (feof(fp))
+        {
+        //    printf("\n\tFichier Fini !!!");
+           chaine[i]='\0';
+        }
+    }
+    // printf("%s",chaine);
+
+    int retClose = fclose(fp);
+    if (retClose!= 0)
+    {
+        printf("Erreur Open !");
+        // return EXIT_FAILURE;
+    }
+    return chaine;
 }
