@@ -5,18 +5,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+// #include "menu.c"
 // #include "read_source.c"
-#include "cripting.c"
+// #include "writing.c"
+// #include "cripting.c"
 
-#define LG 10
-
-struct art
-{
-    char car;
-};
-
+void menu_display(void);
+void read_source(void);
+void input_source(void);
 void input_perroquet(void);
-// void lecture(void);
-void encriptage(void);
+void cripting(void);
+void uncripting(void);
+
 
 #endif // ENTETE_INCLUDED
